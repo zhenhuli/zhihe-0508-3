@@ -1,0 +1,17 @@
+{
+  "name": "subscription-manage-server",
+  "version": "1.0.0",
+  "description": "会员订阅管理系统后端服务",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["subscription", "membership", "manage"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  }
+}

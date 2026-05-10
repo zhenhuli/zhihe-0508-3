@@ -1,0 +1,18 @@
+{
+  "name": "subscription-manage",
+  "version": "1.0.0",
+  "description": "会员订阅管理系统 - 前后端一键启动",
+  "scripts": {
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install",
+    "dev": "node start.js",
+    "start": "node start.js",
+    "server": "cd server && node server.js",
+    "client": "cd client && npm run dev"
+  },
+  "keywords": ["subscription", "membership", "manage"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
