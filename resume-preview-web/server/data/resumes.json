@@ -1,0 +1,38 @@
+[
+  {
+    "id": "06f50fb2-b165-4bb8-b340-d1c0617811a0",
+    "templateName": "前端",
+    "personalInfo": {
+      "name": "张三",
+      "email": "zhangsan@example.com",
+      "phone": "19809899877",
+      "address": "阿萨德",
+      "summary": "阿萨德发生的发生的\n啊sdfas 的发生f\n啊是短发是短发"
+    },
+    "education": [
+      {
+        "school": "北京大学",
+        "degree": "本科",
+        "major": "计算机",
+        "startDate": "1995.09",
+        "endDate": "1999.06",
+        "description": "阿萨德啊发生地方阿萨德"
+      }
+    ],
+    "workExperience": [
+      {
+        "company": "xxx有限公司",
+        "position": "leader",
+        "startDate": "2020.04",
+        "endDate": "2020.09",
+        "description": "没啥好说的"
+      }
+    ],
+    "skills": [
+      "那可是相当多了那可是相当多了那可是相当多了那可是相当多了那可是相当多了",
+      "那可是相当多了那可是相当多了那可是相当多了那可是相当多了"
+    ],
+    "createdAt": "2026-05-10T07:14:50.210Z",
+    "updatedAt": "2026-05-10T07:23:16.840Z"
+  }
+]
