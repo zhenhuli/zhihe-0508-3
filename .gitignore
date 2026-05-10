@@ -3,6 +3,7 @@
 #launch.json folder
 .vscode/
 .history
+.next/
 node_modules
 #Cache folder
 .alcache/
