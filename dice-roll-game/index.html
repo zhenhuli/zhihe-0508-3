@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>骰子模拟器</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎲 骰子模拟器</h1>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="diceCount">骰子数量:</label>
+                <input type="number" id="diceCount" min="1" max="10" value="1">
+            </div>
+            
+            <div class="control-group">
+                <label for="skinSelect">骰子皮肤:</label>
+                <select id="skinSelect">
+                    <option value="classic">经典白色</option>
+                    <option value="black">炫酷黑色</option>
+                    <option value="red">热情红色</option>
+                    <option value="blue">科技蓝色</option>
+                    <option value="green">自然绿色</option>
+                    <option value="gold">豪华金色</option>
+                </select>
+            </div>
+            
+            <button id="rollBtn" class="roll-btn">摇动骰子</button>
+        </div>
+        
+        <div id="diceContainer" class="dice-container"></div>
+        
+        <div class="result-panel">
+            <h3>当前点数: <span id="currentResult">-</span></h3>
+        </div>
+        
+        <div class="history-panel">
+            <h3>历史记录</h3>
+            <button id="clearHistoryBtn" class="clear-btn">清空记录</button>
+            <ul id="historyList"></ul>
+        </div>
+    </div>
+    
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
