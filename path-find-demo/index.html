@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A* 路径寻路可视化演示</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>A* 路径寻路可视化演示</h1>
+    
+    <div class="controls">
+      <div class="mode-selector">
+        <button id="btn-start" class="mode-btn active">设置起点</button>
+        <button id="btn-end" class="mode-btn">设置终点</button>
+        <button id="btn-wall" class="mode-btn">绘制障碍物</button>
+        <button id="btn-erase" class="mode-btn">擦除</button>
+      </div>
+      
+      <div class="action-buttons">
+        <button id="btn-start-find">开始寻路</button>
+        <button id="btn-replay">路径回放</button>
+        <button id="btn-clear">清空网格</button>
+      </div>
+      
+      <div class="speed-control">
+        <label>动画速度:</label>
+        <input type="range" id="speed-slider" min="1" max="50" value="10">
+        <span id="speed-value">10ms</span>
+      </div>
+    </div>
+    
+    <div class="legend">
+      <div class="legend-item"><span class="legend-color start"></span> 起点</div>
+      <div class="legend-item"><span class="legend-color end"></span> 终点</div>
+      <div class="legend-item"><span class="legend-color wall"></span> 障碍物</div>
+      <div class="legend-item"><span class="legend-color visited"></span> 已访问</div>
+      <div class="legend-item"><span class="legend-color path"></span> 最终路径</div>
+    </div>
+    
+    <div class="grid-container">
+      <div id="grid" class="grid"></div>
+    </div>
+    
+    <div id="status" class="status">点击网格开始设置</div>
+  </div>
+  
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
