@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>渐变文字生成工具</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>渐变文字生成工具</h1>
+            <p>自定义渐变文字，实时预览，一键复制 CSS 代码</p>
+        </header>
+
+        <div class="main-content">
+            <div class="control-panel">
+                <div class="control-group">
+                    <label>输入文字</label>
+                    <input type="text" id="textInput" value="渐变文字" maxlength="50">
+                </div>
+
+                <div class="control-group">
+                    <label>渐变类型</label>
+                    <select id="gradientType">
+                        <option value="linear">线性渐变</option>
+                        <option value="radial">径向渐变</option>
+                    </select>
+                </div>
+
+                <div class="control-group" id="directionGroup">
+                    <label>渐变方向</label>
+                    <select id="gradientDirection">
+                        <option value="to right">从左到右</option>
+                        <option value="to left">从右到左</option>
+                        <option value="to bottom">从上到下</option>
+                        <option value="to top">从下到上</option>
+                        <option value="to right bottom">左上到右下</option>
+                        <option value="to right top">左下到右上</option>
+                        <option value="to left bottom">右上到左下</option>
+                        <option value="to left top">右下到左上</option>
+                    </select>
+                </div>
+
+                <div class="control-group" id="radialShapeGroup" style="display: none;">
+                    <label>径向形状</label>
+                    <select id="radialShape">
+                        <option value="circle">圆形</option>
+                        <option value="ellipse">椭圆形</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>颜色设置</label>
+                    <div class="color-inputs">
+                        <div class="color-item">
+                            <input type="color" id="color1" value="#667eea">
+                            <span>颜色 1</span>
+                        </div>
+                        <div class="color-item">
+                            <input type="color" id="color2" value="#764ba2">
+                            <span>颜色 2</span>
+                        </div>
+                    </div>
+                    <button id="addColorBtn" class="btn-secondary">+ 添加颜色</button>
+                </div>
+
+                <div class="control-group">
+                    <label>字体大小 (px)</label>
+                    <input type="range" id="fontSize" min="12" max="120" value="48">
+                    <span id="fontSizeValue">48px</span>
+                </div>
+
+                <div class="control-group">
+                    <label>字体选择</label>
+                    <select id="fontFamily">
+                        <option value="system-ui, -apple-system, sans-serif">系统默认</option>
+                        <option value="Arial, sans-serif">Arial</option>
+                        <option value="'Times New Roman', serif">Times New Roman</option>
+                        <option value="'Courier New', monospace">Courier New</option>
+                        <option value="Georgia, serif">Georgia</option>
+                        <option value="Verdana, sans-serif">Verdana</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>字体粗细</label>
+                    <select id="fontWeight">
+                        <option value="normal">正常</option>
+                        <option value="bold">粗体</option>
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                        <option value="300">300</option>
+                        <option value="400">400</option>
+                        <option value="500">500</option>
+                        <option value="600">600</option>
+                        <option value="700">700</option>
+                        <option value="800">800</option>
+                        <option value="900">900</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="preview-section">
+                <div class="preview-box">
+                    <div id="previewText">渐变文字</div>
+                </div>
+
+                <div class="css-code-section">
+                    <div class="code-tabs">
+                        <button class="tab-btn active" data-tab="css">CSS 方案</button>
+                        <button class="tab-btn" data-tab="svg">SVG 方案</button>
+                    </div>
+                    <div class="code-content active" id="cssTab">
+                        <div class="code-wrapper">
+                            <pre id="cssCode"></pre>
+                            <button id="copyCssBtn" class="btn-primary">复制代码</button>
+                        </div>
+                    </div>
+                    <div class="code-content" id="svgTab">
+                        <div class="code-wrapper">
+                            <pre id="svgCode"></pre>
+                            <button id="copySvgBtn" class="btn-primary">复制代码</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">复制成功！</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
