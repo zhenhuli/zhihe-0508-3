@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>像素画创作工具</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>🎨 像素画</h1>
+      <button class="header-btn" id="settingsBtn">⚙️</button>
+    </header>
+    
+    <main class="canvas-wrapper">
+      <canvas id="pixelCanvas"></canvas>
+    </main>
+    
+    <nav class="bottom-toolbar">
+      <div class="tool-item active" data-tool="pencil">
+        <span class="tool-icon">✏️</span>
+        <span class="tool-label">铅笔</span>
+      </div>
+      <div class="tool-item" data-tool="eraser">
+        <span class="tool-icon">🧹</span>
+        <span class="tool-label">橡皮擦</span>
+      </div>
+      <div class="tool-item" data-tool="fill">
+        <span class="tool-icon">🪣</span>
+        <span class="tool-label">填充</span>
+      </div>
+      <div class="tool-item" id="colorTool">
+        <span class="tool-icon" id="colorPreview">🎨</span>
+        <span class="tool-label">颜色</span>
+      </div>
+      <div class="tool-item" id="exportBtn">
+        <span class="tool-icon">💾</span>
+        <span class="tool-label">导出</span>
+      </div>
+    </nav>
+    
+    <div class="modal-overlay" id="settingsModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h3>画布设置</h3>
+          <button class="close-btn" id="closeSettings">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="input-row">
+            <label>宽度</label>
+            <input type="number" id="canvasWidth" value="16" min="4" max="64">
+          </div>
+          <div class="input-row">
+            <label>高度</label>
+            <input type="number" id="canvasHeight" value="16" min="4" max="64">
+          </div>
+          <button class="primary-btn" id="resizeCanvas">重置画布</button>
+          
+          <h4 style="margin-top: 1.5rem;">显示设置</h4>
+          <label class="toggle-row">
+            <span>显示网格线</span>
+            <input type="checkbox" id="showGrid" checked>
+          </label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal-overlay" id="colorModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h3>选择颜色</h3>
+          <button class="close-btn" id="closeColor">✕</button>
+        </div>
+        <div class="modal-body">
+          <input type="color" id="colorPicker" value="#000000" class="color-picker-large">
+          <h4>预设颜色</h4>
+          <div class="color-palette" id="colorPalette"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal-overlay" id="exportModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h3>导出图片</h3>
+          <button class="close-btn" id="closeExport">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="input-row">
+            <label>缩放倍数</label>
+            <input type="number" id="exportScale" value="10" min="1" max="100">
+          </div>
+          <label class="toggle-row">
+            <span>包含网格线</span>
+            <input type="checkbox" id="exportGrid">
+          </label>
+          <button class="primary-btn" id="savePNG">💾 保存为 PNG</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
