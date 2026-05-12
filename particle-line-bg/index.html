@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>连线粒子特效 | Particle Line Background</title>
+  </head>
+  <body>
+    <canvas id="particleCanvas"></canvas>
+    <div id="app">
+      <header class="header">
+        <nav class="nav">
+          <div class="logo">Particle</div>
+          <ul class="nav-links">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#features">特性</a></li>
+            <li><a href="#about">关于</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="main">
+        <section id="home" class="hero">
+          <div class="hero-content">
+            <h1 class="hero-title">连线粒子特效</h1>
+            <p class="hero-subtitle">优雅的动态粒子背景，为您的网站增添科技感</p>
+            <div class="hero-buttons">
+              <button class="btn btn-primary">开始使用</button>
+              <button class="btn btn-secondary">查看文档</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="features" class="features">
+          <div class="container">
+            <h2 class="section-title">核心特性</h2>
+            <div class="feature-grid">
+              <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>高性能</h3>
+                <p>原生 Canvas 渲染，流畅的 60fps 动画体验</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>可定制</h3>
+                <p>支持调节粒子数量、连线距离、移动速度</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>响应式</h3>
+                <p>完美适配各种屏幕尺寸，移动端友好</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="control-panel">
+        <div class="control-header">
+          <span class="control-title">控制面板</span>
+          <button class="toggle-btn" id="togglePanel">−</button>
+        </div>
+        <div class="control-content" id="controlContent">
+          <div class="control-item">
+            <label>粒子数量: <span id="particleValue">100</span></label>
+            <input type="range" id="particleCount" min="20" max="300" value="100">
+          </div>
+          <div class="control-item">
+            <label>连线距离: <span id="distanceValue">150</span></label>
+            <input type="range" id="lineDistance" min="50" max="300" value="150">
+          </div>
+          <div class="control-item">
+            <label>移动速度: <span id="speedValue">1.0</span></label>
+            <input type="range" id="moveSpeed" min="0.1" max="3" step="0.1" value="1">
+          </div>
+          <div class="control-item">
+            <label>粒子类型</label>
+            <select id="particleType" class="particle-select">
+              <option value="mixed">混合 (Mixed)</option>
+              <option value="circle">圆形 (Circle)</option>
+              <option value="star">星形 (Star)</option>
+              <option value="square">方形 (Square)</option>
+              <option value="triangle">三角 (Triangle)</option>
+              <option value="diamond">菱形 (Diamond)</option>
+            </select>
+          </div>
+          <div class="control-item">
+            <label>特效预设</label>
+            <select id="effectPreset" class="particle-select">
+              <option value="default">默认粒子</option>
+              <option value="starfield">🌟 星空效果</option>
+              <option value="fire">🔥 火焰效果</option>
+              <option value="snow">❄️ 雪花效果</option>
+              <option value="neon">💜 霓虹效果</option>
+              <option value="bubble">🫧 泡泡效果</option>
+              <option value="matrix">💚 矩阵雨</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; 2024 Particle Line Background. Built with Vite & Vanilla JS.</p>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
