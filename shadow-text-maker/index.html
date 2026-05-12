@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文字阴影生成器 - Shadow Text Maker</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <h1>🎨 文字阴影生成器</h1>
+        <p>实时预览，一键复制 CSS 代码</p>
+      </header>
+
+      <main class="main-container">
+        <section class="config-panel">
+          <h2>⚙️ 配置面板</h2>
+          
+          <div class="config-group">
+            <h3>文字设置</h3>
+            <div class="input-row">
+              <label>文字内容</label>
+              <input type="text" id="textContent" value="Shadow Text" maxlength="30" />
+            </div>
+            <div class="input-row">
+              <label>字体大小</label>
+              <input type="range" id="fontSize" min="20" max="100" value="48" />
+              <span id="fontSizeValue">48px</span>
+            </div>
+            <div class="input-row">
+              <label>文字颜色</label>
+              <input type="color" id="textColor" value="#333333" />
+            </div>
+          </div>
+
+          <div class="config-group">
+            <h3>阴影设置</h3>
+            <div class="input-row">
+              <label>水平偏移 (X)</label>
+              <input type="range" id="shadowX" min="-50" max="50" value="5" />
+              <span id="shadowXValue">5px</span>
+            </div>
+            <div class="input-row">
+              <label>垂直偏移 (Y)</label>
+              <input type="range" id="shadowY" min="-50" max="50" value="5" />
+              <span id="shadowYValue">5px</span>
+            </div>
+            <div class="input-row">
+              <label>模糊半径</label>
+              <input type="range" id="shadowBlur" min="0" max="50" value="10" />
+              <span id="shadowBlurValue">10px</span>
+            </div>
+            <div class="input-row">
+              <label>阴影颜色</label>
+              <input type="color" id="shadowColor" value="#000000" />
+            </div>
+            <div class="input-row">
+              <label>阴影透明度</label>
+              <input type="range" id="shadowOpacity" min="0" max="100" value="50" />
+              <span id="shadowOpacityValue">50%</span>
+            </div>
+          </div>
+
+          <div class="config-group">
+            <h3>字体样式</h3>
+            <div class="input-row">
+              <label>字体粗细</label>
+              <select id="fontWeight">
+                <option value="normal">正常</option>
+                <option value="bold">粗体</option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="300">300</option>
+                <option value="400">400</option>
+                <option value="500">500</option>
+                <option value="600">600</option>
+                <option value="700">700</option>
+                <option value="800">800</option>
+                <option value="900">900</option>
+              </select>
+            </div>
+            <div class="input-row">
+              <label>字体样式</label>
+              <select id="fontStyle">
+                <option value="normal">正常</option>
+                <option value="italic">斜体</option>
+                <option value="oblique">倾斜</option>
+              </select>
+            </div>
+            <div class="input-row">
+              <label>字间距</label>
+              <input type="range" id="letterSpacing" min="0" max="20" value="0" />
+              <span id="letterSpacingValue">0px</span>
+            </div>
+          </div>
+
+          <div class="config-group">
+            <h3>预设效果</h3>
+            <div class="preset-buttons">
+              <button class="preset-btn" data-preset="classic">经典</button>
+              <button class="preset-btn" data-preset="neon">霓虹</button>
+              <button class="preset-btn" data-preset="soft">柔和</button>
+              <button class="preset-btn" data-preset="hard">硬朗</button>
+              <button class="preset-btn" data-preset="glow">发光</button>
+              <button class="preset-btn" data-preset="3d">3D</button>
+            </div>
+          </div>
+
+          <div class="config-group">
+            <h3>🎨 预览背景</h3>
+            <div class="bg-buttons">
+              <button class="bg-btn active" data-bg="white">白色</button>
+              <button class="bg-btn" data-bg="light">浅灰</button>
+              <button class="bg-btn" data-bg="dark">深灰</button>
+              <button class="bg-btn" data-bg="black">黑色</button>
+              <button class="bg-btn" data-bg="gradient">渐变</button>
+              <button class="bg-btn" data-bg="custom">自定义</button>
+            </div>
+            <div class="input-row" id="customBgRow" style="display: none; margin-top: 15px;">
+              <label>自定义颜色</label>
+              <input type="color" id="customBgColor" value="#ffffff" />
+            </div>
+          </div>
+        </section>
+
+        <section class="preview-panel">
+          <h2>👁️ 预览效果</h2>
+          
+          <div class="preview-area">
+            <div id="previewText">Shadow Text</div>
+          </div>
+
+          <div class="css-output">
+            <h3>📝 CSS 代码</h3>
+            <div class="code-container">
+              <pre id="cssCode"></pre>
+              <button id="copyBtn" class="copy-btn">📋 复制代码</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
