@@ -1,0 +1,9 @@
+{
+  "pid": 52943,
+  "startedAt": 1778643179628,
+  "command": "dev",
+  "cwd": "/Users/lizhenhu/Desktop/zhihe-0508-3/music-album-gallery",
+  "port": 3003,
+  "hostname": "::1",
+  "url": "http://[::1]:3003"
+}
