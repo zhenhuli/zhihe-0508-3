@@ -1,0 +1,15 @@
+{
+  "name": "sports-score-static",
+  "version": "1.0.0",
+  "description": "体育赛事比分静态展示页",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.12.0",
+    "parcel": "^2.12.0",
+    "sass": "^1.77.0"
+  }
+}

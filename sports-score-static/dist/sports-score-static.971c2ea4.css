@@ -1,0 +1,506 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #2c3e50;
+  background-color: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.app-container {
+  flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+}
+
+.header {
+  color: #fff;
+  background: linear-gradient(135deg, #1e3a5f 0%, #122238 100%);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px #0000001a;
+}
+
+.header .logo {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.header .nav {
+  gap: .5rem;
+  display: flex;
+}
+
+.header .nav-btn {
+  color: #fffc;
+  cursor: pointer;
+  background: #ffffff1a;
+  border: none;
+  border-radius: 20px;
+  padding: .6rem 1.2rem;
+  font-size: .9rem;
+  transition: all .3s;
+}
+
+.header .nav-btn:hover {
+  background: #fff3;
+}
+
+.header .nav-btn.active {
+  color: #1e3a5f;
+  background: #fff;
+  font-weight: 600;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+.section-header {
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+}
+
+.section-header h2 {
+  color: #2c3e50;
+  font-size: 1.5rem;
+}
+
+.live-indicator {
+  color: #fff;
+  background: #e74c3c;
+  border-radius: 12px;
+  padding: .25rem .75rem;
+  font-size: .75rem;
+  font-weight: 700;
+  animation: 2s infinite pulse;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .6;
+  }
+}
+
+.matches-container {
+  gap: 1rem;
+  display: grid;
+}
+
+.match-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform .3s, box-shadow .3s;
+  box-shadow: 0 2px 8px #00000014;
+}
+
+.match-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px #0000001f;
+}
+
+.match-card .match-header {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  display: flex;
+}
+
+.match-card .match-header .league {
+  color: #7f8c8d;
+  font-size: .85rem;
+  font-weight: 500;
+}
+
+.match-card .match-header .match-status {
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.match-card .match-header .match-status.live {
+  color: #e74c3c;
+}
+
+.match-card .match-header .match-status.finished {
+  color: #7f8c8d;
+}
+
+.match-card .match-header .match-status.upcoming {
+  color: #2ecc71;
+}
+
+.match-card .match-teams {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.match-card .match-teams .team {
+  flex: 1;
+  align-items: center;
+  gap: .75rem;
+  display: flex;
+}
+
+.match-card .match-teams .team.home {
+  justify-content: flex-start;
+}
+
+.match-card .match-teams .team.away {
+  justify-content: flex-end;
+}
+
+.match-card .match-teams .team .team-logo {
+  color: #fff;
+  background: linear-gradient(135deg, #1e3a5f, #2ecc71);
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  font-size: .9rem;
+  font-weight: 700;
+  display: flex;
+}
+
+.match-card .match-teams .team .team-name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.match-card .match-teams .match-score {
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.match-card .match-teams .match-score .score {
+  color: #2c3e50;
+  letter-spacing: .5rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.match-card .match-teams .match-score .score.vs {
+  color: #2ecc71;
+  letter-spacing: .2rem;
+  font-size: 1.5rem;
+}
+
+.match-card .match-teams .match-score .time {
+  color: #7f8c8d;
+  margin-top: .25rem;
+  font-size: .85rem;
+}
+
+.calendar-nav {
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+}
+
+.calendar-nav .calendar-nav-btn {
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #e1e8ed;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  font-size: 1rem;
+  transition: all .3s;
+  display: flex;
+}
+
+.calendar-nav .calendar-nav-btn:hover {
+  color: #fff;
+  background: #1e3a5f;
+  border-color: #1e3a5f;
+}
+
+.calendar-nav .current-date {
+  color: #2c3e50;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.calendar-days {
+  grid-template-columns: repeat(7, 1fr);
+  gap: .5rem;
+  margin-bottom: 1.5rem;
+  display: grid;
+}
+
+.calendar-day {
+  text-align: center;
+  cursor: pointer;
+  background: #fff;
+  border: 2px solid #0000;
+  border-radius: 8px;
+  padding: .75rem .5rem;
+  transition: all .3s;
+}
+
+.calendar-day:hover {
+  border-color: #1e3a5f;
+}
+
+.calendar-day.active {
+  color: #fff;
+  background: #1e3a5f;
+  border-color: #1e3a5f;
+}
+
+.calendar-day .day-name {
+  margin-bottom: .25rem;
+  font-size: .75rem;
+  font-weight: 500;
+}
+
+.calendar-day .day-date {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.calendar-day .match-count {
+  opacity: .8;
+  margin-top: .25rem;
+  font-size: .7rem;
+}
+
+.league-selector {
+  gap: .5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+}
+
+.league-btn {
+  cursor: pointer;
+  background: #fff;
+  border: 2px solid #e1e8ed;
+  border-radius: 20px;
+  padding: .5rem 1rem;
+  font-size: .9rem;
+  font-weight: 500;
+  transition: all .3s;
+}
+
+.league-btn:hover {
+  border-color: #1e3a5f;
+}
+
+.league-btn.active {
+  color: #fff;
+  background: #1e3a5f;
+  border-color: #1e3a5f;
+}
+
+.standings-container {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px #00000014;
+}
+
+.standings-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.standings-table th, .standings-table td {
+  text-align: center;
+  padding: 1rem;
+}
+
+.standings-table th {
+  color: #fff;
+  background: #1e3a5f;
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.standings-table td {
+  border-bottom: 1px solid #e1e8ed;
+}
+
+.standings-table tr {
+  transition: background .3s;
+}
+
+.standings-table tr:hover {
+  background: #1e3a5f0d;
+}
+
+.standings-table tr:last-child td {
+  border-bottom: none;
+}
+
+.standings-table .team-info {
+  text-align: left;
+  align-items: center;
+  gap: .75rem;
+  display: flex;
+}
+
+.standings-table .team-info .team-logo {
+  color: #fff;
+  background: linear-gradient(135deg, #1e3a5f, #2ecc71);
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  font-size: .75rem;
+  font-weight: 700;
+  display: flex;
+}
+
+.standings-table .team-info .team-name {
+  font-weight: 600;
+}
+
+.standings-table .position {
+  width: 40px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.standings-table .position.champion {
+  color: gold;
+  text-shadow: 0 1px 2px #ffd7004d;
+}
+
+.standings-table .position.runner-up {
+  color: silver;
+  text-shadow: 0 1px 2px #c0c0c04d;
+}
+
+.standings-table .position.third-place {
+  color: #cd7f32;
+  text-shadow: 0 1px 2px #cd7f324d;
+}
+
+.standings-table .position.top-4 {
+  color: #27ae60;
+}
+
+.standings-table .position.top-6 {
+  color: #1e8449;
+}
+
+.standings-table .position.relegation {
+  color: #e74c3c;
+}
+
+.standings-table .standings-row.position-1 {
+  background: linear-gradient(90deg, #ffd70014, #0000);
+}
+
+.standings-table .standings-row.position-2 {
+  background: linear-gradient(90deg, #c0c0c014, #0000);
+}
+
+.standings-table .standings-row.position-3 {
+  background: linear-gradient(90deg, #cd7f3214, #0000);
+}
+
+.standings-table .points {
+  color: #1e3a5f;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.footer {
+  color: #fffc;
+  text-align: center;
+  background: #1e3a5f;
+  padding: 1.5rem;
+  font-size: .9rem;
+}
+
+@media (width <= 768px) {
+  .main-content, .header {
+    padding: 1rem;
+  }
+
+  .header .logo {
+    font-size: 1.25rem;
+  }
+
+  .header .nav-btn {
+    padding: .5rem 1rem;
+    font-size: .85rem;
+  }
+
+  .match-card {
+    padding: 1rem;
+  }
+
+  .match-card .match-teams .team .team-logo {
+    width: 36px;
+    height: 36px;
+    font-size: .75rem;
+  }
+
+  .match-card .match-teams .team .team-name {
+    font-size: .9rem;
+  }
+
+  .match-card .match-teams .match-score .score {
+    letter-spacing: .25rem;
+    font-size: 1.5rem;
+  }
+
+  .calendar-days .calendar-day {
+    padding: .5rem .25rem;
+  }
+
+  .calendar-days .calendar-day .day-name {
+    font-size: .65rem;
+  }
+
+  .calendar-days .calendar-day .day-date {
+    font-size: .85rem;
+  }
+
+  .standings-table th, .standings-table td {
+    padding: .75rem .5rem;
+    font-size: .85rem;
+  }
+
+  .standings-table .team-info .team-logo {
+    width: 28px;
+    height: 28px;
+    font-size: .65rem;
+  }
+
+  .standings-table .team-info .team-name {
+    font-size: .85rem;
+  }
+}
+/*# sourceMappingURL=sports-score-static.971c2ea4.css.map */

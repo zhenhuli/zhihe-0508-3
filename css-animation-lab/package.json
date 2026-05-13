@@ -1,0 +1,13 @@
+{
+  "name": "css-animation-lab",
+  "version": "1.0.0",
+  "description": "CSS Animation Laboratory",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}

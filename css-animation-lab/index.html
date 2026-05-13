@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 动画实验室</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 CSS 动画实验室</h1>
+            <p>探索和预览各种 CSS3 动画效果</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="buttons">按钮动画</button>
+            <button class="tab-btn" data-tab="loaders">加载动画</button>
+            <button class="tab-btn" data-tab="transitions">过渡效果</button>
+            <button class="tab-btn" data-tab="keyframes">帧动画</button>
+        </nav>
+
+        <main class="content">
+            <section id="buttons" class="tab-content active">
+                <h2>按钮动画</h2>
+                <div class="demo-grid">
+                    <div class="demo-card">
+                        <h3>悬停缩放</h3>
+                        <button class="btn btn-scale">Hover Me</button>
+                    </div>
+                    <div class="demo-card">
+                        <h3>背景渐变</h3>
+                        <button class="btn btn-gradient">Hover Me</button>
+                    </div>
+                    <div class="demo-card">
+                        <h3>边框动画</h3>
+                        <button class="btn btn-border">Hover Me</button>
+                    </div>
+                    <div class="demo-card">
+                        <h3>阴影浮动</h3>
+                        <button class="btn btn-shadow">Hover Me</button>
+                    </div>
+                    <div class="demo-card">
+                        <h3>脉冲效果</h3>
+                        <button class="btn btn-pulse">Click Me</button>
+                    </div>
+                    <div class="demo-card">
+                        <h3>滑动填充</h3>
+                        <button class="btn btn-slide">Hover Me</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="loaders" class="tab-content">
+                <h2>加载动画</h2>
+                <div class="demo-grid">
+                    <div class="demo-card">
+                        <h3>旋转圆环</h3>
+                        <div class="loader spinner"></div>
+                    </div>
+                    <div class="demo-card">
+                        <h3>弹跳圆点</h3>
+                        <div class="loader bounce">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="demo-card">
+                        <h3>跳动条纹</h3>
+                        <div class="loader bars">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="demo-card">
+                        <h3>脉冲圆环</h3>
+                        <div class="loader pulse-ring"></div>
+                    </div>
+                    <div class="demo-card">
+                        <h3>旋转方块</h3>
+                        <div class="loader cube"></div>
+                    </div>
+                    <div class="demo-card">
+                        <h3>渐变转圈</h3>
+                        <div class="loader gradient-spin"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="transitions" class="tab-content">
+                <h2>过渡效果</h2>
+                <div class="demo-grid">
+                    <div class="demo-card">
+                        <h3>卡片翻转</h3>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">正面</div>
+                                <div class="flip-card-back">背面</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-card">
+                        <h3>图片缩放</h3>
+                        <div class="zoom-box">
+                            <div class="zoom-content">Hover Me</div>
+                        </div>
+                    </div>
+                    <div class="demo-card">
+                        <h3>滑动显示</h3>
+                        <div class="slide-box">
+                            <div class="slide-overlay">
+                                <span>Hello!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-card">
+                        <h3>颜色过渡</h3>
+                        <div class="color-transition"></div>
+                    </div>
+                    <div class="demo-card">
+                        <h3>3D 旋转</h3>
+                        <div class="rotate-3d-box">Hover</div>
+                    </div>
+                    <div class="demo-card">
+                        <h3>弹性效果</h3>
+                        <button class="bouncy-btn">Click</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="keyframes" class="tab-content">
+                <h2>帧动画</h2>
+                <div class="demo-grid">
+                    <div class="demo-card">
+                        <h3>浮动动画</h3>
+                        <div class="float-box">🎈</div>
+                    </div>
+                    <div class="demo-card">
+                        <h3>抖动效果</h3>
+                        <div class="shake-box">📱</div>
+                    </div>
+                    <div class="demo-card">
+                        <h3>打字效果</h3>
+                        <div class="typing">Hello World!</div>
+                    </div>
+                    <div class="demo-card">
+                        <h3>彩虹文字</h3>
+                        <div class="rainbow-text">COLORFUL</div>
+                    </div>
+                    <div class="demo-card">
+                        <h3>心跳动画</h3>
+                        <div class="heartbeat">❤️</div>
+                    </div>
+                    <div class="demo-card">
+                        <h3>波纹扩散</h3>
+                        <div class="ripple-container">
+                            <div class="ripple"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <section class="code-panel">
+            <h2>💻 代码预览</h2>
+            <div class="code-header">
+                <span id="code-title">选择一个动画查看代码</span>
+                <div class="code-tabs">
+                    <button class="code-tab active" data-code-type="css">CSS</button>
+                    <button class="code-tab" data-code-type="html">HTML</button>
+                </div>
+                <button id="copy-btn" class="copy-btn">复制代码</button>
+            </div>
+            <pre><code id="code-display">点击任意动画元素查看代码...</code></pre>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>体育赛事比分展示</title>
+  <link rel="stylesheet" href="/sports-score-static.971c2ea4.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+      <h1 class="logo">⚽ 体育赛事中心</h1>
+      <nav class="nav">
+        <button class="nav-btn active" data-section="live">实时比分</button>
+        <button class="nav-btn" data-section="schedule">赛程日历</button>
+        <button class="nav-btn" data-section="standings">积分榜</button>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <section id="live" class="section active">
+        <div class="section-header">
+          <h2>🔥 实时赛事</h2>
+          <span class="live-indicator">LIVE</span>
+        </div>
+        <div id="live-matches" class="matches-container"></div>
+      </section>
+
+      <section id="schedule" class="section">
+        <div class="section-header">
+          <h2>📅 赛程日历</h2>
+        </div>
+        <div class="calendar-nav">
+          <button class="calendar-nav-btn" id="prev-week">&lt;</button>
+          <span class="current-date" id="current-date"></span>
+          <button class="calendar-nav-btn" id="next-week">&gt;</button>
+        </div>
+        <div id="calendar-days" class="calendar-days"></div>
+        <div id="schedule-matches" class="matches-container"></div>
+      </section>
+
+      <section id="standings" class="section">
+        <div class="section-header">
+          <h2>🏆 联赛积分榜</h2>
+        </div>
+        <div class="league-selector">
+          <button class="league-btn active" data-league="premier">英超</button>
+          <button class="league-btn" data-league="laliga">西甲</button>
+          <button class="league-btn" data-league="bundesliga">德甲</button>
+        </div>
+        <div id="standings-table" class="standings-container"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2024 体育赛事中心 - 数据仅供展示</p>
+    </footer>
+  </div>
+
+  <script type="module" src="/sports-score-static.3052eed7.js"></script>
+
+
+</body></html>
