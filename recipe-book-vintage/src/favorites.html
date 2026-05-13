@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的收藏 - 复古美食菜谱</title>
+  <link rel="stylesheet" href="css/main.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">🍳 复古美食菜谱</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">首页</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="favorites.html">我的收藏</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <h2 class="section-title mb-4">❤️ 我的收藏菜谱</h2>
+    <div class="row g-4" id="favoriteGrid">
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container text-center">
+      <p class="mb-0">🍽️ 复古美食菜谱 - 用心烹饪每一道菜</p>
+    </div>
+  </footer>
+
+  <script src="js/main.min.js"></script>
+  <script>
+    function renderFavoriteRecipes() {
+      const container = document.getElementById('favoriteGrid');
+      const favoriteRecipes = getAllRecipes().filter(r => favorites.includes(r.id));
+
+      if (favoriteRecipes.length === 0) {
+        container.innerHTML = `
+          <div class="col-12 text-center py-5">
+            <div class="fs-1 mb-3">🍴</div>
+            <h3 class="text-muted">还没有收藏任何菜谱</h3>
+            <p class="text-muted mb-4">去首页发现美味吧！</p>
+            <a href="index.html" class="back-btn">去首页看看</a>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = favoriteRecipes.map(recipe => `
+        <div class="col-md-6 col-lg-4">
+          <div class="card vintage-card h-100">
+            <img src="${recipe.image}" class="card-img-top" alt="${recipe.name}" style="height: 200px;">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="category-badge py-1 px-2">${recipe.categoryName}</span>
+                <button class="favorite-btn ${favorites.includes(recipe.id) ? 'active' : ''}" 
+                        data-id="${recipe.id}" onclick="toggleFavorite(${recipe.id})">
+                  ${favorites.includes(recipe.id) ? '❤️' : '🤍'}
+                </button>
+              </div>
+              <h5 class="card-title">${recipe.name}</h5>
+              <p class="card-text text-muted small">${recipe.description}</p>
+              <div class="d-flex gap-3 text-muted small mb-3">
+                <span>⏱️ ${recipe.prepTime}</span>
+                <span>🍳 ${recipe.cookTime}</span>
+                <span>👥 ${recipe.servings}人份</span>
+              </div>
+              <a href="detail.html?id=${recipe.id}" class="btn w-100" 
+                 style="background: var(--vintage-brown); color: var(--vintage-gold); border: 2px solid var(--vintage-gold);">
+                查看详情
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', renderFavoriteRecipes);
+  </script>
+</body>
+</html>

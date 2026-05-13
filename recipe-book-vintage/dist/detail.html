@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>菜谱详情 - 复古美食菜谱</title><link rel="stylesheet" href="css/main.min.css"></head><body><nav class="navbar navbar-expand-lg sticky-top"><div class="container"><a class="navbar-brand" href="index.html">🍳 复古美食菜谱</a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto"><li class="nav-item"><a class="nav-link" href="index.html">首页</a></li><li class="nav-item"><a class="nav-link" href="favorites.html">我的收藏</a></li><li class="nav-item"><a class="nav-link" href="add-recipe.html">添加菜谱</a></li></ul></div></div></nav><main class="container my-5" id="recipeDetail"></main><footer class="footer"><div class="container text-center"><p class="mb-0">🍽️ 复古美食菜谱 - 用心烹饪每一道菜</p></div></footer><script src="js/main.min.js"></script><script>function renderRecipeDetail() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const recipeId = urlParams.get('id');
+      const recipe = getRecipeById(recipeId);
+
+      if (!recipe) {
+        document.getElementById('recipeDetail').innerHTML = `
+          <div class="text-center py-5">
+            <h3 class="text-muted">菜谱不存在</h3>
+            <a href="index.html" class="back-btn mt-3">返回首页</a>
+          </div>
+        `;
+        return;
+      }
+
+      document.getElementById('recipeDetail').innerHTML = `
+        <a href="index.html" class="back-btn">← 返回菜谱列表</a>
+        
+        <div class="detail-header mb-5">
+          <div class="row">
+            <div class="col-md-5">
+              <img src="${recipe.image}" class="img-fluid rounded" alt="${recipe.name}" style="height: 300px; width: 100%; object-fit: cover;">
+            </div>
+            <div class="col-md-7">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <span class="category-badge">${recipe.categoryName}</span>
+                <button class="favorite-btn ${favorites.includes(recipe.id) ? 'active' : ''}" 
+                        data-id="${recipe.id}" onclick="toggleFavorite(${recipe.id})">
+                  ${favorites.includes(recipe.id) ? '❤️' : '🤍'}
+                </button>
+              </div>
+              <h1 class="mb-3">${recipe.name}</h1>
+              <p class="text-muted mb-4">${recipe.description}</p>
+              <div class="d-flex flex-wrap gap-4">
+                <div class="text-center">
+                  <div class="fs-4 mb-1">⏱️</div>
+                  <div class="fw-bold">准备时间</div>
+                  <div class="text-muted">${recipe.prepTime}</div>
+                </div>
+                <div class="text-center">
+                  <div class="fs-4 mb-1">🍳</div>
+                  <div class="fw-bold">烹饪时间</div>
+                  <div class="text-muted">${recipe.cookTime}</div>
+                </div>
+                <div class="text-center">
+                  <div class="fs-4 mb-1">👥</div>
+                  <div class="fw-bold">份量</div>
+                  <div class="text-muted">${recipe.servings}人份</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-5">
+          <div class="col-md-4">
+            <div class="detail-header">
+              <h3 class="section-title mb-4">🥗 食材清单</h3>
+              ${recipe.ingredients.map(ing => `
+                <div class="ingredient-item d-flex justify-content-between">
+                  <span>${ing.name}</span>
+                  <span class="fw-bold" style="color: var(--vintage-brown);">${ing.amount}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          
+          <div class="col-md-8">
+            <h3 class="section-title mb-4">📝 制作步骤</h3>
+            ${recipe.steps.map((step, index) => `
+              <div class="step-item">
+                <div class="step-number">${index + 1}</div>
+                <div class="row align-items-center">
+                  <div class="col-md-8">
+                    <p class="mb-0 pt-2">${step.text}</p>
+                  </div>
+                  <div class="col-md-4">
+                    <img src="${step.image}" class="img-fluid rounded step-image" alt="步骤${index + 1}">
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', renderRecipeDetail);</script></body></html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>添加菜谱 - 复古美食菜谱</title><link rel="stylesheet" href="css/main.min.css"></head><body><nav class="navbar navbar-expand-lg sticky-top"><div class="container"><a class="navbar-brand" href="index.html">🍳 复古美食菜谱</a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav ms-auto"><li class="nav-item"><a class="nav-link" href="index.html">首页</a></li><li class="nav-item"><a class="nav-link" href="favorites.html">我的收藏</a></li><li class="nav-item"><a class="nav-link active" href="add-recipe.html">添加菜谱</a></li></ul></div></div></nav><main class="container my-5"><div class="detail-header"><h2 class="section-title mb-4">📝 添加新菜谱</h2><form id="recipeForm"><div class="row g-4"><div class="col-md-6"><div class="mb-3"><label class="form-label fw-bold">菜谱名称 *</label> <input type="text" class="form-control" name="name" required placeholder="例如：红烧肉"></div></div><div class="col-md-6"><div class="mb-3"><label class="form-label fw-bold">菜品分类 *</label> <select class="form-select" name="category" required><option value="">请选择分类</option><option value="chinese">中餐</option><option value="western">西餐</option><option value="japanese">日料</option><option value="thai">泰餐</option></select></div></div><div class="col-md-12"><div class="mb-3"><label class="form-label fw-bold">菜谱描述 *</label> <textarea class="form-control" name="description" rows="2" required placeholder="简要描述这道菜的特色"></textarea></div></div><div class="col-md-4"><div class="mb-3"><label class="form-label fw-bold">准备时间 *</label> <input type="text" class="form-control" name="prepTime" required placeholder="例如：30分钟"></div></div><div class="col-md-4"><div class="mb-3"><label class="form-label fw-bold">烹饪时间 *</label> <input type="text" class="form-control" name="cookTime" required placeholder="例如：60分钟"></div></div><div class="col-md-4"><div class="mb-3"><label class="form-label fw-bold">份量（人份）*</label> <input type="number" class="form-control" name="servings" required placeholder="例如：4"></div></div><div class="col-md-12"><div class="mb-3"><label class="form-label fw-bold">菜品图片URL</label> <input type="url" class="form-control" name="image" placeholder="输入图片链接（可选）"> <small class="text-muted">可以使用 Unsplash 等图库的图片链接</small></div></div></div><hr class="my-4" style="border-color: var(--vintage-gold);"><h4 class="mb-3">🥗 食材清单</h4><div id="ingredientsList"><div class="ingredient-item mb-2 d-flex gap-2 align-items-center"><input type="text" class="form-control flex-grow-1" name="ingredientName" placeholder="食材名称" required> <input type="text" class="form-control" name="ingredientAmount" placeholder="用量" style="width: 150px;" required> <button type="button" class="btn btn-danger" onclick="removeIngredient(this)">✕</button></div></div><button type="button" class="btn mt-2" style="background: var(--vintage-brown); color: var(--vintage-gold);" onclick="addIngredient()">+ 添加食材</button><hr class="my-4" style="border-color: var(--vintage-gold);"><h4 class="mb-3">📝 制作步骤</h4><div id="stepsList"><div class="step-item mb-3"><div class="d-flex gap-2 mb-2"><span class="step-number position-static" style="width: 30px; height: 30px; font-size: 0.9rem;">1</span> <input type="text" class="form-control flex-grow-1" name="stepText" placeholder="步骤描述" required> <button type="button" class="btn btn-danger" onclick="removeStep(this)">✕</button></div><input type="url" class="form-control" name="stepImage" placeholder="步骤图片URL（可选）"></div></div><button type="button" class="btn mt-2" style="background: var(--vintage-brown); color: var(--vintage-gold);" onclick="addStep()">+ 添加步骤</button><hr class="my-4" style="border-color: var(--vintage-gold);"><div class="d-flex gap-3"><button type="submit" class="btn btn-lg" style="background: var(--vintage-gold); color: var(--vintage-dark-brown); font-weight: bold;">💾 保存菜谱</button> <button type="reset" class="btn btn-lg btn-secondary">重置表单</button></div></form></div></main><footer class="footer"><div class="container text-center"><p class="mb-0">🍽️ 复古美食菜谱 - 用心烹饪每一道菜</p></div></footer><script src="js/main.min.js"></script><script>let ingredientCount = 1;
+    let stepCount = 1;
+
+    function addIngredient() {
+      ingredientCount++;
+      const container = document.getElementById('ingredientsList');
+      const newIngredient = document.createElement('div');
+      newIngredient.className = 'ingredient-item mb-2 d-flex gap-2 align-items-center';
+      newIngredient.innerHTML = `
+        <input type="text" class="form-control flex-grow-1" name="ingredientName" placeholder="食材名称" required>
+        <input type="text" class="form-control" name="ingredientAmount" placeholder="用量" style="width: 150px;" required>
+        <button type="button" class="btn btn-danger" onclick="removeIngredient(this)">✕</button>
+      `;
+      container.appendChild(newIngredient);
+    }
+
+    function removeIngredient(btn) {
+      if (document.querySelectorAll('#ingredientsList .ingredient-item').length > 1) {
+        btn.parentElement.remove();
+      } else {
+        alert('至少需要一种食材！');
+      }
+    }
+
+    function addStep() {
+      stepCount++;
+      const container = document.getElementById('stepsList');
+      const newStep = document.createElement('div');
+      newStep.className = 'step-item mb-3';
+      newStep.innerHTML = `
+        <div class="d-flex gap-2 mb-2">
+          <span class="step-number position-static" style="width: 30px; height: 30px; font-size: 0.9rem;">${stepCount}</span>
+          <input type="text" class="form-control flex-grow-1" name="stepText" placeholder="步骤描述" required>
+          <button type="button" class="btn btn-danger" onclick="removeStep(this)">✕</button>
+        </div>
+        <input type="url" class="form-control" name="stepImage" placeholder="步骤图片URL（可选）">
+      `;
+      container.appendChild(newStep);
+      updateStepNumbers();
+    }
+
+    function removeStep(btn) {
+      if (document.querySelectorAll('#stepsList .step-item').length > 1) {
+        btn.closest('.step-item').remove();
+        stepCount--;
+        updateStepNumbers();
+      } else {
+        alert('至少需要一个步骤！');
+      }
+    }
+
+    function updateStepNumbers() {
+      document.querySelectorAll('#stepsList .step-item .step-number').forEach((el, index) => {
+        el.textContent = index + 1;
+      });
+    }
+
+    document.getElementById('recipeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      
+      const ingredientNames = formData.getAll('ingredientName');
+      const ingredientAmounts = formData.getAll('ingredientAmount');
+      const ingredients = ingredientNames.map((name, index) => ({
+        name,
+        amount: ingredientAmounts[index]
+      }));
+
+      const stepTexts = formData.getAll('stepText');
+      const stepImages = formData.getAll('stepImage');
+      const steps = stepTexts.map((text, index) => ({
+        text,
+        image: stepImages[index] || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400'
+      }));
+
+      const categoryMap = {
+        chinese: '中餐',
+        western: '西餐',
+        japanese: '日料',
+        thai: '泰餐'
+      };
+
+      const newRecipe = {
+        id: Date.now(),
+        name: formData.get('name'),
+        category: formData.get('category'),
+        categoryName: categoryMap[formData.get('category')],
+        image: formData.get('image') || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600',
+        description: formData.get('description'),
+        prepTime: formData.get('prepTime'),
+        cookTime: formData.get('cookTime'),
+        servings: parseInt(formData.get('servings')),
+        ingredients,
+        steps,
+        isCustom: true
+      };
+
+      let customRecipes = JSON.parse(localStorage.getItem('customRecipes')) || [];
+      customRecipes.push(newRecipe);
+      localStorage.setItem('customRecipes', JSON.stringify(customRecipes));
+
+      alert('🎉 菜谱添加成功！');
+      window.location.href = 'index.html';
+    });</script></body></html>
